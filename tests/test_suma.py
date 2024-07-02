@@ -1,5 +1,5 @@
 import unittest # biblioteca estándar para escribir y ejecutar pruebas
-from Modsuma.suma import add # Importa la función add desde el módulo suma dentro del paquete suma
+from Modsuma.suma import add # type: ignore # Importa la función add desde el módulo suma dentro del paquete suma
 
 class TestAddFunction(unittest.TestCase): # definición de la clase de prueba
     def test_add(self): # método de prueba
