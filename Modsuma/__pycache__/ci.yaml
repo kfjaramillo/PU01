@@ -1,0 +1,30 @@
+name: CI # Nombre del flujo de trabajo
+
+on:
+  push:
+    branches: [main] # Ejecutar cuando se hace push a la rama 'main'
+  pull_request:
+    branches: [main] # Ejecutar cuando se hace un pull request a la rama 'main'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2 # Utiliza una acción para realizar el checkout del repositorio
+
+      - name: Set up Python
+        uses: actions/setup-python@v2 # Utiliza una acción para configurar Python
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip 
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          python -m unittest discover -s tests
+# Ejecuta las pruebas unitarias utilizando unittest
